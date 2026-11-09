@@ -1,0 +1,1085 @@
+# MASTER WEBSITE BUILD PROMPT — SPEEDO WIRES
+## An immersive, premium, conversion-focused industrial website
+
+Act as a world-class creative director, senior UI/UX designer, industrial brand strategist, motion designer, and expert frontend engineer. Your task is to design and build a complete, production-quality website for **SPEEDO WIRES**, a manufacturer of electrical plug cords, PVC-insulated wires and cables, and related products.
+
+Do not create a generic corporate template. Build a distinctive digital experience that makes a serious industrial manufacturer look precise, technologically advanced, trustworthy, and capable of handling high-volume OEM requirements.
+
+The website must be visually ambitious, technically functional, responsive, accessible, and easy for a non-technical business owner to maintain.
+
+**Do not stop at a design proposal or a static mockup. Implement the actual website and its interactions.**
+
+---
+
+# 1. UNDERSTAND THE BUSINESS
+
+Speedo Wires serves businesses that require reliable electrical connections and manufacturing partners. Its audience includes:
+
+- Original Equipment Manufacturers (OEMs).
+- Fan manufacturers.
+- Electrical appliance manufacturers.
+- Electronics and LED product manufacturers.
+- Air cooler manufacturers.
+- Buyers sourcing electrical components in volume.
+- Procurement managers, engineers, distributors, and business owners.
+
+The company leaflet describes the following capabilities and claims:
+
+- Approximately 30 years of manufacturing experience.
+- Installed capacity of up to 10 million plug cords per year.
+- In-house copper conductor drawing and annealing.
+- In-house PVC compounding.
+- Manufacturing, insulation, and quality-control capabilities.
+- An in-house testing laboratory for routine, type, and customer-specific testing.
+- Experience serving fan-industry and other electrical and electronic OEMs.
+- Plug cords associated with IS 1293 and PVC-insulated wires and cables associated with IS 694.
+- ISO 9001:2019 certification and BIS licensing, as stated in the supplied leaflet.
+
+Treat the leaflet as the source of truth for company information. Do not invent additional certifications, customer names, partnerships, factory capabilities, test results, or performance guarantees.
+
+If a claim needs confirmation, make it editable and flag it for review before publication.
+
+## The central brand proposition
+
+**POWER IN EVERY CONNECTION.**
+
+Present Speedo Wires as a manufacturing partner that connects engineering precision, production capacity, quality systems, and dependable OEM supply.
+
+The website should communicate three things within seconds:
+
+1. We know how electrical products are manufactured.
+2. We can support serious production requirements.
+3. We take product quality and long-term business relationships seriously.
+
+Avoid exaggerated marketing language, unsupported superlatives, and empty phrases such as “revolutionary solutions” or “the world's best manufacturer.”
+
+---
+
+# 2. NON-NEGOTIABLE BRAND IDENTITY
+
+## The logo must remain exact
+
+The original Speedo Wires logo is RED.
+
+I will provide the actual logo asset separately.
+
+**Use that exact uploaded logo asset throughout the website. Never recreate, redraw, reinterpret, regenerate, recolour, or approximate it.**
+
+Requirements:
+
+- Preserve the exact lettering, typography, symbol, proportions, spacing, and colour of the supplied logo.
+- Do not substitute generated text for the logo.
+- Do not use an AI-generated approximation, even if it looks similar.
+- Keep the logo consistently positioned in the header and footer.
+- Maintain its visual prominence across all pages.
+- Use the same original logo asset on desktop and mobile.
+- Preserve its aspect ratio and use appropriate sizing.
+- If the logo has a transparent background, retain it.
+- If the asset is unavailable or cannot be rendered correctly, reserve a logo container and report the issue rather than inventing a replacement.
+
+The logo is a fixed brand asset, not a design element to experiment with.
+
+## Colour system
+
+Use a disciplined red, charcoal, white, and industrial-grey palette.
+
+Suggested colours for the website interface:
+
+- Brand red: sample the exact primary red from the supplied logo.
+- Midnight charcoal: `#0A0D12`
+- Deep industrial black: `#11161C`
+- Graphite: `#252C34`
+- Cool grey: `#687381`
+- Light background: `#F4F6F8`
+- Pure white: `#FFFFFF`
+- Copper accent: `#C47A48`, used selectively for actual copper-wire imagery and fine visual details.
+
+The logo's red must remain exact. Other colours may support it but must never compete with it.
+
+Use red for meaningful interactions, active navigation, selected states, important headings, and primary calls to action. Do not colour every component red.
+
+## Typography
+
+Use a modern, highly legible sans-serif type system.
+
+Typography should feel engineered and confident:
+
+- Strong, large headlines.
+- Clear section hierarchy.
+- Short paragraphs.
+- Compact technical labels.
+- Generous line spacing.
+- Highly readable product specifications.
+
+Use monospace typography selectively for technical identifiers, dimensions, standards, and production metrics.
+
+Avoid decorative fonts, excessive italic text, and unnecessary uppercase paragraphs.
+
+---
+
+# 3. CREATIVE DIRECTION: INDUSTRIAL PRECISION MEETS DIGITAL CINEMA
+
+Build a visual language inspired by precision engineering, copper conductors, industrial machinery, electrical pathways, and high-performance manufacturing.
+
+The website should feel like an intersection between a premium technology brand and a sophisticated manufacturing facility.
+
+Imagine the visual restraint of a high-end electronics brand, the immersive storytelling of a premium automotive website, and the technical credibility of an established industrial manufacturer.
+
+Do not copy any specific website. Create an original visual identity for Speedo Wires.
+
+## The signature visual concept: “THE JOURNEY OF A CONNECTION”
+
+A copper conductor is the visual thread connecting the entire experience.
+
+Use this concept to link different sections of the website:
+
+- Copper strands introduce the manufacturing story.
+- A fine red line traces the conductor's journey.
+- The line transitions into a cable outline.
+- The cable leads into finished-product photography.
+- The finished product connects to the industries and applications it serves.
+- The final line leads to the enquiry section.
+
+This should be subtle, elegant, and technically inspired.
+
+The visual storytelling should reinforce the actual manufacturing process, not imply that the company performs processes that have not been verified.
+
+## Signature motion system
+
+Use purposeful animation instead of generic motion effects.
+
+Examples:
+
+1. A fine red line draws itself across the screen as the user scrolls.
+2. Copper-wire macro photography moves slightly at different scroll speeds, creating restrained depth.
+3. Manufacturing stages reveal themselves in sequence.
+4. Large production metrics animate into view once.
+5. Product images respond subtly to pointer movement.
+6. Product cards reveal additional details on hover.
+7. Section transitions use line-based wipes, controlled masks, and changes in background tone.
+8. Buttons have precise, responsive hover and pressed states.
+9. The active navigation item has a small red indicator.
+10. Loading transitions, if used, should be short and should never delay access to the website.
+
+Keep animations performant. Respect reduced-motion accessibility settings and provide usable fallbacks for mobile devices.
+
+Avoid gratuitous particle effects, excessive glowing lines, fake electrical sparks, spinning 3D objects, and endless animation loops.
+
+---
+
+# 4. HOMEPAGE: DESIGN AND IMPLEMENT THIS FIRST
+
+The homepage must immediately communicate the company's identity, products, and manufacturing capability.
+
+## A. Navigation header
+
+Create a refined navigation bar.
+
+Left:
+- Original red Speedo Wires logo, using the exact uploaded asset.
+
+Centre/right:
+- Home
+- Products
+- Manufacturing
+- Quality & Compliance
+- Industries
+- About Us
+- Contact
+
+Far right:
+- A prominent red “Request a Quote” button.
+
+Behaviour:
+
+- The header starts integrated into the hero section.
+- It becomes a solid or subtly translucent background when scrolling, maintaining strong contrast and legibility.
+- Navigation links lead to real pages or correctly positioned sections.
+- The active page is indicated by a thin red marker.
+- Mobile navigation opens a functional, accessible menu.
+- The logo remains clearly visible on every background.
+
+Do not make the header excessively tall. The website should feel spacious, not wasteful.
+
+## B. Cinematic hero section
+
+This is the most important section.
+
+Create a large, visually striking hero with an approximately 65–80vh height on desktop, adapting to mobile screens.
+
+Use a dark industrial background with realistic product photography.
+
+The hero image should feature an actual Speedo Wires product image supplied by me wherever possible. If I supply a cleaned product image, use it rather than generating a substitute.
+
+Composition:
+
+- Headline and supporting copy occupy the left side.
+- The product occupies the right side.
+- Dark industrial texture provides depth.
+- Controlled lighting highlights the cable and plug.
+- A subtle red line or copper detail connects the composition.
+- Maintain sufficient negative space around the headline.
+- Use a dark gradient behind text where necessary for readability.
+
+Suggested copy:
+
+Eyebrow:
+ELECTRICAL CONNECTIONS. ENGINEERED.
+
+Headline:
+**POWER IN EVERY CONNECTION.**
+
+Emphasise “CONNECTION” with the brand red, while keeping the remaining headline white.
+
+Supporting copy:
+
+“Precision-manufactured plug cords, wires and cables for the products that keep industries moving.”
+
+Primary CTA:
+**Explore Our Products**
+
+Secondary CTA:
+**Discover Our Manufacturing**
+
+Both buttons must work.
+
+Below the hero, introduce a restrained trust strip containing verified information such as manufacturing experience, installed capacity, in-house capabilities, and quality credentials.
+
+Use the supplied leaflet for the relevant claims and mark them for confirmation before publication.
+
+### Important visual instruction
+
+The product must be the hero's visual anchor.
+
+Do not put the product inside a generic rounded rectangle merely because it is convenient. Let the image integrate naturally with the industrial background.
+
+Do not use AI-generated product imagery as an exact representation of a product when a real reference image has been supplied.
+
+## C. Product catalogue preview
+
+Section eyebrow:
+OUR PRODUCTS
+
+Headline:
+**ENGINEERED FOR THE CONNECTION. BUILT FOR THE APPLICATION.**
+
+Supporting copy:
+
+“Explore our range of electrical products, manufactured to support the requirements of OEMs and industrial applications.”
+
+Display a refined collection of product cards.
+
+Each card should include:
+
+- Actual product image.
+- Product name.
+- Short, factual description.
+- Relevant verified specification, if available.
+- “View Details” action.
+
+Create a consistent image treatment, but do not force all images into unnatural crops.
+
+Product images should have:
+
+- Clean white or light-grey backgrounds.
+- Consistent visual scale.
+- Realistic shadows.
+- Sharp details.
+- No added logos, labels, or fabricated technical markings.
+
+Provide a “View All Products” CTA.
+
+The catalogue must be data-driven so that new products can be added without manually rebuilding the layout.
+
+## D. Manufacturing: the conductor journey
+
+This should be one of the website's most memorable sections.
+
+Section eyebrow:
+OUR CAPABILITIES
+
+Headline:
+**FROM RAW COPPER TO FINISHED CONNECTION.**
+
+Supporting copy:
+
+“Our in-house manufacturing capabilities support control over critical processes, product consistency, and dependable OEM supply.”
+
+Build a horizontal process sequence on desktop and a vertical sequence on mobile.
+
+Use the following stages where confirmed:
+
+1. Copper conductor drawing.
+2. Annealing.
+3. PVC compounding.
+4. Insulation and cable-related manufacturing.
+5. Production and assembly.
+6. Testing and quality control.
+
+Use the leaflet and actual factory materials to verify which processes belong in the final sequence.
+
+### Interaction
+
+As the user scrolls:
+
+- The active stage becomes highlighted.
+- A thin red line progresses between stages.
+- The relevant image transitions into view.
+- A short explanation appears.
+- Supporting technical details remain readable.
+
+On desktop, consider a pinned visual panel with changing content. On mobile, use a natural vertical layout instead of forcing the pinned interaction.
+
+Use real factory images and videos when available. If none are supplied, use restrained, clearly replaceable visual placeholders.
+
+Do not invent machinery, laboratory equipment, production methods, or certifications.
+
+CTA:
+**Explore Our Manufacturing**
+
+## E. Quality and compliance
+
+Section eyebrow:
+QUALITY IS BUILT IN.
+
+Headline:
+**PRECISION YOU CAN VERIFY.**
+
+Present the company's quality framework through an editorial layout, not a wall of generic icons.
+
+Potential elements:
+
+- Applicable IS standards.
+- ISO certification.
+- BIS licensing.
+- In-house testing laboratory.
+- Routine and type testing.
+- Customer-specific testing parameters.
+- Calibrated instruments.
+
+Include only claims supported by the leaflet and subsequently confirmed by the client.
+
+Create a document area that can eventually hold authentic certificates, test reports, and relevant technical documents.
+
+Every document should be replaceable through the product or content data structure.
+
+Do not fabricate certificate images, certificate numbers, testing results, or document downloads.
+
+If evidence is unavailable, display a discreet “Documentation to be provided” placeholder in the development workflow rather than a false credential.
+
+CTA:
+**Explore Quality & Compliance**
+
+## F. Industries served
+
+Headline:
+**POWERING THE PRODUCTS PEOPLE RELY ON.**
+
+Create a sophisticated grid of application categories:
+
+- Fans and fan components.
+- Air coolers.
+- Electrical appliances.
+- Electronic equipment.
+- LED products.
+- Stabilizers and adapters.
+- Power tools.
+- Other relevant applications supported by the leaflet.
+
+Use strong editorial imagery, understated line icons, or a combination of both.
+
+Each application card should have a concise explanation of how Speedo Wires' products may serve that category.
+
+Avoid claiming specific customer relationships or application approvals without evidence.
+
+Hover interaction:
+A restrained red line, subtle image zoom, or controlled change in contrast.
+
+The section should feel like a curated industry map, not a generic collection of stock photographs.
+
+## G. Why OEMs choose Speedo Wires
+
+Headline:
+**MORE THAN A SUPPLIER. A MANUFACTURING PARTNER.**
+
+Build a clean horizontal feature system covering:
+
+- Manufacturing capability.
+- High-volume production.
+- Quality and compliance framework.
+- Fan-industry experience.
+- OEM-oriented support.
+
+Use the company leaflet to support the descriptions.
+
+Avoid repeating the same information already presented in the manufacturing section. This area should explain why the capabilities matter to a buyer.
+
+For example, connect in-house processes to process control and consistency where supported, and connect installed capacity to high-volume production requirements.
+
+Do not promise delivery times, defect rates, or guaranteed availability without verified data.
+
+## H. The conversion section
+
+Create a bold, dark section that visually closes the homepage.
+
+Headline:
+**LET'S BUILD YOUR NEXT CONNECTION.**
+
+Supporting copy:
+
+“Looking for a dependable manufacturing partner for your electrical product requirements? Tell us what you need.”
+
+Primary CTA:
+**Request a Quote**
+
+Secondary CTA:
+**Contact Our Team**
+
+Use a dramatic but restrained copper-wire image on one side, with the enquiry message on the other.
+
+The section should feel like a natural conclusion to the journey from conductor to finished product.
+
+## I. Footer
+
+Include:
+
+- Original red Speedo Wires logo.
+- One-sentence company description.
+- Navigation links.
+- Product categories.
+- Manufacturing and quality links.
+- Contact details.
+- Social links only where actual profiles exist.
+- Privacy policy and terms links where applicable.
+- Copyright information.
+
+Use editable company data.
+
+The supplied leaflet uses the name “Maruti Udyog” and provides contact details, while the website brand is Speedo Wires. Keep the public brand as Speedo Wires, but do not assume the legal entity name, brand relationship, email address, or phone number is correct without confirmation.
+
+Keep uncertain contact information editable and unpublished until verified.
+
+---
+
+# 5. PRODUCTS PAGE
+
+Create a complete catalogue experience, not simply a grid of pictures.
+
+The page should use the same global header, logo, typography, colour system, and footer as the homepage.
+
+## Catalogue introduction
+
+Headline:
+**THE RIGHT CONNECTION STARTS HERE.**
+
+Supporting copy:
+“Explore our product range and find the electrical components suited to your application.”
+
+Use a compact industrial hero image with product photography.
+
+## Product discovery
+
+Provide:
+
+- Search by product name.
+- Product-category filters.
+- Application filters.
+- Specification filters when meaningful data exists.
+- Sorting options where appropriate.
+- Clear-filters action.
+- Empty search-result state.
+- Mobile-friendly filter drawer.
+
+Do not display arbitrary technical filters merely to make the page look sophisticated.
+
+If the client has not supplied a field's values, do not invent them.
+
+## Product cards
+
+Each card should include:
+
+- Product image.
+- Product name.
+- Short description.
+- Selected verified specification, if available.
+- View Details action.
+- Enquire action where appropriate.
+
+Create elegant image containers with consistent spacing and responsive sizing.
+
+Hover behaviour should be restrained: a slight image zoom, subtle border transition, and clear action affordance.
+
+Avoid excessive shadows, oversized rounded corners, and unnecessary glassmorphism.
+
+## Product detail pages
+
+Create a reusable product-detail template.
+
+Include:
+
+1. Breadcrumb navigation.
+2. Product name and category.
+3. Large product-image gallery.
+4. Thumbnail navigation.
+5. Image zoom or enlarged view.
+6. Product overview.
+7. Technical specifications table.
+8. Applications.
+9. Applicable standards, where verified.
+10. Relevant downloadable documentation, if available.
+11. Related products.
+12. Request-a-quote CTA.
+
+Use placeholders for incomplete product data.
+
+Example:
+
+- Product name: [To be confirmed]
+- Product code: [To be confirmed]
+- Conductor material: Copper — only where confirmed for that product.
+- Conductor size: [To be confirmed]
+- Rated voltage: [To be confirmed]
+- Applicable standard: [To be confirmed]
+- Available variants: [To be confirmed]
+- Technical datasheet: [To be provided]
+
+Do not apply these placeholder values literally to every product. Use a shared schema with optional fields.
+
+Unknown fields should be omitted from the public specification table, unless the client specifically wants a “Specifications pending” state.
+
+**Never infer voltage ratings, conductor gauges, temperature ratings, insulation properties, electrical performance, or compliance from the product photograph alone.**
+
+---
+
+# 6. THE MANUFACTURING PAGE
+
+Build an immersive, technically credible page focused on how Speedo Wires operates.
+
+Headline:
+**CONTROL THE PROCESS. RESPECT THE DETAIL.**
+
+Use a combination of:
+
+- Wide factory imagery.
+- Copper conductor macro photography.
+- Process diagrams.
+- Short technical explanations.
+- Verified manufacturing metrics.
+- Real laboratory and production images.
+
+Potential sections:
+
+1. Copper conductor drawing and annealing.
+2. PVC compounding.
+3. Insulation and product manufacturing.
+4. Production scale and machinery.
+5. Testing and quality control.
+6. OEM manufacturing requirements.
+
+Where genuine process information is available, use interactive diagrams and informative annotations.
+
+Allow visitors to inspect relevant details without turning the page into a complicated engineering simulation.
+
+The page should communicate operational capability and process control rather than merely showing generic factory photographs.
+
+---
+
+# 7. QUALITY & COMPLIANCE PAGE
+
+Create a dedicated page that makes quality-related information easy to verify.
+
+Organise content into:
+
+- Company certifications.
+- Applicable product standards.
+- Testing capabilities.
+- Laboratory facilities.
+- Quality-control procedures.
+- Technical documents.
+
+Use a structured document library with file names, document types, applicable products, and download actions.
+
+Only enable a download if a real document is present.
+
+If a certificate or document is missing, keep the relevant field editable in the administration/data structure.
+
+Do not generate fake certification badges or use a certification logo without appropriate authorisation.
+
+---
+
+# 8. INDUSTRIES PAGE
+
+Create a visually engaging page that connects product categories to actual applications.
+
+Potential categories from the company leaflet include fans, air coolers, electrical appliances, electronic equipment, LED products, stabilizers, adapters, power tools, and other supported applications.
+
+For each industry:
+
+- Use relevant imagery.
+- Explain the application at a high level.
+- Link to relevant products where that relationship has been confirmed.
+- Provide a targeted enquiry CTA.
+
+Do not invent customer logos, case studies, project outcomes, or partnerships.
+
+Make this page useful to a procurement manager who arrives with a specific application in mind.
+
+---
+
+# 9. ABOUT PAGE
+
+Tell the company's story through evidence and manufacturing capability.
+
+Headline:
+**EXPERIENCE BUILT INTO EVERY CONNECTION.**
+
+Cover:
+
+- Company background.
+- Manufacturing experience.
+- Core product focus.
+- In-house capabilities.
+- Industries served.
+- Production capacity.
+- Commitment to quality and OEM relationships.
+
+Use actual factory photographs, team images, or company history materials when supplied.
+
+Do not invent founding dates, founder biographies, customer names, awards, or geographic expansion claims.
+
+Keep the page factual, concise, and visually engaging.
+
+---
+
+# 10. CONTACT AND REQUEST-A-QUOTE EXPERIENCE
+
+Build a functional enquiry experience designed for business buyers.
+
+Form fields:
+
+Required:
+- Name.
+- Company name.
+- Business email or phone.
+- Product or requirement category.
+- Brief description of the requirement.
+
+Optional:
+- Estimated quantity.
+- Technical specifications.
+- Target timeline.
+- File attachment, if supported.
+- Additional notes.
+
+Form behaviour:
+
+- Validate required fields.
+- Validate email and phone formats appropriately.
+- Display understandable error messages.
+- Show a clear loading state during submission.
+- Show a genuine success message only after successful submission.
+- Prevent accidental duplicate submissions.
+- Provide a useful confirmation state.
+- Protect against spam where appropriate.
+
+Do not claim an enquiry has been sent unless a real backend or connected submission mechanism confirms it.
+
+If no backend is configured, implement a clearly labelled development/demo state and explain what must be connected before launch.
+
+Structure the form so it can later connect to an appropriate email service, CRM, database, or business workflow.
+
+Do not expose API keys or secrets in frontend code.
+
+---
+
+# 11. THE ADVANCED INTERACTIVE FEATURES
+
+Explore the capabilities of modern frontend development and Google AI Studio, but prioritise working interactions over visual gimmicks.
+
+## Feature A: Copper-line scroll narrative
+
+Build a fine red line that visually progresses through the homepage.
+
+The line can transform from a simple stroke into a conductor outline, then connect manufacturing, product, and application sections.
+
+Use SVG or CSS-based techniques where suitable.
+
+The effect must remain subtle, performant, and accessible.
+
+## Feature B: Product inspection mode
+
+Allow users to inspect high-resolution product images.
+
+Support:
+
+- Enlarged image viewing.
+- Thumbnail selection.
+- Keyboard navigation.
+- Clear close controls.
+- Touch-friendly interactions.
+- Proper image loading and fallback states.
+
+Do not simulate technical properties that cannot be established from an image.
+
+## Feature C: Interactive manufacturing timeline
+
+Let visitors select or scroll through manufacturing stages.
+
+Show:
+
+- Stage title.
+- Relevant image.
+- Short explanation.
+- Verified supporting information.
+
+The timeline must remain usable on touchscreens and with keyboard navigation.
+
+## Feature D: Dynamic specification tables
+
+Build specification tables from the product data rather than hardcoding each page.
+
+The table should:
+
+- Display only available values.
+- Use consistent labels.
+- Handle long values.
+- Support mobile layouts.
+- Distinguish confirmed values from internal placeholders in the editing workflow.
+
+## Feature E: Smart enquiry prefill
+
+When a visitor clicks “Request a Quote” on a particular product, carry that product name into the enquiry form automatically.
+
+If they begin on the general contact page, allow them to choose a product category manually.
+
+Do not ask the visitor to enter information that is already available from their current page.
+
+## Feature F: Motion-aware interface
+
+Use smooth scrolling, controlled transitions, responsive button states, and carefully timed reveals.
+
+All interactions must have appropriate reduced-motion fallbacks.
+
+The site must remain usable when JavaScript animations fail or are disabled.
+
+---
+
+# 12. TECHNICAL IMPLEMENTATION
+
+Build a real, maintainable frontend using the supported project environment.
+
+Inspect the available environment before choosing a framework or replacing existing project configuration.
+
+Prefer the existing supported React and TypeScript setup if available.
+
+Use reusable components and a central data model.
+
+Suggested components:
+
+- SiteHeader
+- MobileNavigation
+- HeroSection
+- MetricsStrip
+- ProductCard
+- ProductGrid
+- ProductFilters
+- ProductGallery
+- SpecificationTable
+- ManufacturingTimeline
+- QualityCredentials
+- IndustryCard
+- QuoteForm
+- ContactSection
+- SiteFooter
+
+Suggested data entities:
+
+Product:
+- id
+- slug
+- name
+- category
+- description
+- images
+- specifications
+- applications
+- standards
+- documents
+- publicationStatus
+
+Company:
+- publicBrandName
+- legalEntityName
+- logoAsset
+- address
+- phone
+- email
+- socialLinks
+- verifiedClaims
+
+Keep data separate from presentation.
+
+Create a shared source for the logo and other global brand assets.
+
+Do not hardcode product information separately across multiple pages.
+
+## Content completeness
+
+Support a mix of complete and incomplete products.
+
+A product can be saved as a draft until its required content is ready.
+
+Where a public page must exist before all information is available:
+
+- Show only confirmed specifications.
+- Omit unknown optional fields.
+- Use neutral placeholders for missing images.
+- Avoid publishing incomplete technical claims.
+- Never display internal editing notes to customers.
+
+## Navigation and routing
+
+Implement real routes for all primary pages.
+
+Use appropriate URL slugs, working links, breadcrumbs, and sensible not-found states.
+
+The site must not contain dead buttons, links to `#` without meaningful behaviour, or controls that merely look functional.
+
+## Responsive design
+
+Optimise for:
+
+- Large desktop screens.
+- Standard laptops.
+- Tablets.
+- Mobile phones.
+
+On mobile:
+
+- Maintain a visible, recognisable logo.
+- Keep the primary CTA accessible.
+- Stack layouts naturally.
+- Use touch-friendly controls.
+- Avoid horizontal overflow.
+- Simplify pinned scroll interactions.
+- Prioritise readable text and product imagery.
+
+## Performance
+
+Use image optimisation, responsive image sizing, lazy loading for below-the-fold content, and sensible animation techniques.
+
+Avoid excessive libraries, unnecessarily large video backgrounds, and expensive continuous animation.
+
+Prefer CSS and lightweight SVG for decorative motion.
+
+## Accessibility
+
+Use semantic HTML, keyboard-accessible navigation, visible focus indicators, descriptive image alt text, sufficient colour contrast, and accessible form labels.
+
+Do not rely on colour alone to communicate important information.
+
+---
+
+# 13. VISUAL REFERENCE INSTRUCTIONS
+
+I will provide several reference assets:
+
+1. The original Speedo Wires logo.
+2. The company leaflet.
+3. A homepage mockup.
+4. A product catalogue mockup.
+5. Cleaned product images.
+6. Additional product photographs as the catalogue expands.
+
+Use each asset according to its purpose.
+
+### Original logo
+
+The logo is authoritative for brand identity and colour.
+
+Use the original asset unchanged.
+
+### Company leaflet
+
+The leaflet is authoritative for the company information currently available.
+
+Extract relevant claims and organise them for the website, but flag discrepancies or information that requires confirmation.
+
+### Website mockups
+
+Use the mockups for design direction, layout hierarchy, overall composition, and section ideas.
+
+They are visual references, not screenshots to reproduce pixel-for-pixel.
+
+Build a functioning website with real layout components rather than using the mockup image as a full-page background.
+
+### Product images
+
+Use the supplied product images as the visual authority for the physical product.
+
+Preserve:
+
+- Exact connector and plug geometry.
+- Wire colours and relative thickness.
+- Number and arrangement of pins.
+- Copper strands.
+- Cable shape and proportions.
+- Visible sheath markings.
+- Actual product construction.
+
+Do not invent product features or alter the physical design to make an image more attractive.
+
+If a product image is missing, use a clear placeholder until an authentic image is supplied.
+
+---
+
+# 14. INFORMATION THAT MUST REMAIN EDITABLE
+
+Do not bury business information in design code.
+
+The following must be editable through the central content structure:
+
+- Product names.
+- Product descriptions.
+- Product photographs.
+- Product codes.
+- Technical specifications.
+- Applicable standards.
+- Applications.
+- Certificates and documents.
+- Company contact information.
+- Manufacturing metrics.
+- Industry categories.
+- Social links.
+- Homepage messaging.
+
+For information that has not been provided, use null or an explicit draft placeholder.
+
+Do not silently fill gaps using general industry assumptions.
+
+Before publishing, flag these verification items:
+
+- Exact legal entity name and its relationship to the Speedo Wires brand.
+- Correct contact phone number and email.
+- Official logo file and brand colour.
+- Certification details and supporting documents.
+- Product-specific technical specifications.
+- Actual product imagery.
+- Manufacturing claims and capacity figures.
+- Enquiry form submission destination.
+
+The website must never present a placeholder as a confirmed fact.
+
+---
+
+# 15. DESIGN QUALITY BAR
+
+The final design must feel deliberately art-directed.
+
+Use:
+
+- Strong visual hierarchy.
+- Restrained asymmetry.
+- Generous but efficient spacing.
+- High-quality industrial photography.
+- Precise grid alignment.
+- Distinct section compositions.
+- Strong contrast between dark storytelling sections and light catalogue sections.
+- Consistent button and interaction styles.
+- Subtle, purposeful animation.
+- Real product images wherever available.
+
+Avoid:
+
+- Generic AI-generated corporate templates.
+- Excessive gradients.
+- Random glowing borders.
+- Too many rounded cards.
+- Excessive glassmorphism.
+- Unnecessary floating widgets.
+- Repeated layouts for every section.
+- Tiny text.
+- Fake customer logos.
+- Invented certifications.
+- Fake technical specifications.
+- Decorative elements that interfere with readability.
+- Overly long marketing paragraphs.
+
+The website should be visually striking without looking artificial.
+
+---
+
+# 16. BUILD AND VALIDATION PROCESS
+
+Work in this order.
+
+### Phase 1: Establish the foundation
+
+- Inspect the available project.
+- Identify the supplied assets.
+- Establish the design tokens.
+- Configure the original logo correctly.
+- Build the global header and footer.
+- Establish reusable layout components.
+
+### Phase 2: Build the homepage
+
+Implement the hero, product preview, manufacturing story, quality section, industries, OEM benefits, and enquiry CTA.
+
+Make the page visually complete before expanding into secondary pages.
+
+### Phase 3: Build the catalogue
+
+Implement product cards, filtering, search, product-detail templates, galleries, and dynamic specifications.
+
+Use placeholders where the client's data is incomplete.
+
+### Phase 4: Build supporting pages
+
+Implement Manufacturing, Quality & Compliance, Industries, About Us, Contact, and Request a Quote.
+
+Maintain consistent branding and shared components.
+
+### Phase 5: Implement interactions
+
+Add scroll-linked motion, product inspection, responsive navigation, filters, enquiry prefilling, form validation, and appropriate loading and error states.
+
+### Phase 6: Test the complete experience
+
+Check:
+
+- Every primary navigation link.
+- Every CTA.
+- Mobile menu behaviour.
+- Product search and filters.
+- Product image loading.
+- Specification rendering.
+- Missing-data behaviour.
+- Form validation.
+- Responsive layouts.
+- Keyboard accessibility.
+- Reduced-motion behaviour.
+- Browser console errors.
+- Build and runtime errors.
+
+Fix discovered issues instead of simply listing them.
+
+Do not claim an integration or interaction works unless it has been implemented and tested.
+
+---
+
+# 17. FINAL CREATIVE INSTRUCTION
+
+Do not interpret this brief as a request to create a conventional corporate website with a dark background and red buttons.
+
+The real opportunity is to create a distinctive digital experience around the journey of an electrical connection—from copper conductor to finished product, from manufacturing process to OEM application.
+
+The website should be memorable because of its composition, photography, motion, precision, and clarity—not because it contains unnecessary visual effects.
+
+**Think like an industrial brand with the ambition of a premium technology company.**
+
+Make the homepage exceptional. Make the catalogue genuinely useful. Make every technical claim defensible. Make the original red logo unmistakable. Make the website easy to expand as new products and verified information become available.
+
+Start implementing the website now.
+
+Do not stop after describing the solution. Build the working experience in the available environment, validate the implementation, and clearly identify anything that still requires real business data, external service configuration, or client confirmation.

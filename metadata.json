@@ -1,0 +1,6 @@
+{
+  "name": "Speedo Wires - Industrial Electrical Plug Cords & Cables",
+  "description": "Manufacturer of electrical plug cords, PVC insulated wires and cables, engineered for OEMs and appliance manufacturers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
