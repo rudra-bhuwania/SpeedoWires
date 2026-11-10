@@ -1,11 +1,14 @@
 import React from 'react';
 import { Cpu, ShieldCheck, Factory, Handshake, Clock, Check } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface WhyOemsSectionProps {
   onRequestQuote: () => void;
 }
 
 export const WhyOemsSection: React.FC<WhyOemsSectionProps> = ({ onRequestQuote }) => {
+  const { isDark } = useTheme();
+
   const pillars = [
     {
       icon: <Cpu className="w-6 h-6 text-[#E31B23]" />,
@@ -40,19 +43,27 @@ export const WhyOemsSection: React.FC<WhyOemsSectionProps> = ({ onRequestQuote }
   ];
 
   return (
-    <section className="bg-[#0E131A] text-white py-20 border-t border-b border-white/10">
+    <section
+      className={`py-20 border-t border-b transition-colors ${
+        isDark ? 'bg-[#0E131A] text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="max-w-3xl space-y-3">
           <div className="inline-flex items-center gap-2">
             <span className="w-5 h-[2px] bg-[#E31B23]" />
-            <span className="text-xs font-mono tracking-widest text-slate-300 uppercase">
+            <span
+              className={`text-xs font-mono tracking-widest uppercase ${
+                isDark ? 'text-slate-300' : 'text-slate-600 font-semibold'
+              }`}
+            >
               WHY CHOOSE SPEEDO WIRES
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
             BUILT FOR OEMS. <span className="text-[#E31B23]">TRUSTED FOR QUALITY.</span>
           </h2>
-          <p className="text-base text-slate-300 font-normal">
+          <p className={`text-base font-normal ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
             More than a component supplier. An integrated engineering partner with the capacity and metallurgical control your brand can depend on.
           </p>
         </div>
@@ -61,32 +72,48 @@ export const WhyOemsSection: React.FC<WhyOemsSectionProps> = ({ onRequestQuote }
           {pillars.slice(0, 3).map((pillar, i) => (
             <div
               key={i}
-              className="bg-[#11161C] border border-white/10 rounded-xl p-6 space-y-4 hover:border-white/20 transition-all"
+              className={`rounded-xl p-6 space-y-4 border transition-all ${
+                isDark
+                  ? 'bg-[#11161C] border-white/10 hover:border-white/20'
+                  : 'bg-slate-50/80 border-slate-200 hover:border-slate-300 hover:bg-white shadow-xs hover:shadow-sm'
+              }`}
             >
-              <div className="w-12 h-12 rounded-lg bg-[#161C24] border border-white/5 flex items-center justify-center">
+              <div
+                className={`w-12 h-12 rounded-lg border flex items-center justify-center ${
+                  isDark ? 'bg-[#161C24] border-white/5' : 'bg-red-50 border-red-100'
+                }`}
+              >
                 {pillar.icon}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">{pillar.title}</h3>
-                <div className="text-xs font-mono text-[#E31B23] mt-0.5">{pillar.sub}</div>
+                <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{pillar.title}</h3>
+                <div className="text-xs font-mono text-[#E31B23] mt-0.5 font-semibold">{pillar.sub}</div>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">{pillar.desc}</p>
+              <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{pillar.desc}</p>
             </div>
           ))}
 
           {pillars.slice(3).map((pillar, i) => (
             <div
               key={i + 3}
-              className="bg-[#11161C] border border-white/10 rounded-xl p-6 space-y-4 hover:border-white/20 transition-all md:col-span-1 lg:col-span-1.5"
+              className={`rounded-xl p-6 space-y-4 border transition-all md:col-span-1 lg:col-span-1.5 ${
+                isDark
+                  ? 'bg-[#11161C] border-white/10 hover:border-white/20'
+                  : 'bg-slate-50/80 border-slate-200 hover:border-slate-300 hover:bg-white shadow-xs hover:shadow-sm'
+              }`}
             >
-              <div className="w-12 h-12 rounded-lg bg-[#161C24] border border-white/5 flex items-center justify-center">
+              <div
+                className={`w-12 h-12 rounded-lg border flex items-center justify-center ${
+                  isDark ? 'bg-[#161C24] border-white/5' : 'bg-red-50 border-red-100'
+                }`}
+              >
                 {pillar.icon}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">{pillar.title}</h3>
-                <div className="text-xs font-mono text-[#E31B23] mt-0.5">{pillar.sub}</div>
+                <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{pillar.title}</h3>
+                <div className="text-xs font-mono text-[#E31B23] mt-0.5 font-semibold">{pillar.sub}</div>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">{pillar.desc}</p>
+              <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{pillar.desc}</p>
             </div>
           ))}
         </div>
@@ -94,3 +121,4 @@ export const WhyOemsSection: React.FC<WhyOemsSectionProps> = ({ onRequestQuote }
     </section>
   );
 };
+

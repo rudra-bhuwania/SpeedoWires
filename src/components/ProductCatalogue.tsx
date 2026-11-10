@@ -5,12 +5,14 @@ import { productsData } from '../data/products';
 import { filterProducts } from '../utils/catalogue';
 import { ProductCard } from './ProductCard';
 import { ProductDetailModal } from './ProductDetailModal';
+import { useTheme } from '../context/ThemeContext';
 
 interface ProductCatalogueProps {
   onSelectForQuote: (product: Product) => void;
 }
 
 export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQuote }) => {
+  const { isDark } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('All');
   const [selectedGauge, setSelectedGauge] = useState<WireGauge | 'All'>('All');
@@ -70,28 +72,48 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
   };
 
   return (
-    <section className="bg-[#0A0D12] text-white pt-24 pb-20">
+    <section className={`pt-24 pb-20 transition-colors ${isDark ? 'bg-[#0A0D12] text-white' : 'bg-slate-50 text-slate-900'}`}>
       {/* Catalogue Sub-Hero Banner */}
-      <div className="relative border-b border-white/10 bg-gradient-to-r from-[#0E131A] via-[#161C24] to-[#0E131A] py-12 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-screen">
+      <div
+        className={`relative border-b py-12 overflow-hidden transition-colors ${
+          isDark
+            ? 'border-white/10 bg-gradient-to-r from-[#0E131A] via-[#161C24] to-[#0E131A]'
+            : 'border-slate-200 bg-gradient-to-r from-slate-100 via-white to-slate-100'
+        }`}
+      >
+        <div className={`absolute inset-0 pointer-events-none ${isDark ? 'opacity-20 mix-blend-screen' : 'opacity-10 mix-blend-multiply'}`}>
           <img
             src="/assets/aistudio/Gemini_Generated_Image_rcka1grcka1grcka_bc522c5e.png"
             alt="Copper conductor coils"
             className="w-full h-full object-cover object-center filter brightness-90 contrast-125"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0D12] via-transparent to-[#0A0D12]" />
+        <div
+          className={`absolute inset-0 ${
+            isDark
+              ? 'bg-gradient-to-r from-[#0A0D12] via-transparent to-[#0A0D12]'
+              : 'bg-gradient-to-r from-slate-50 via-transparent to-slate-50'
+          }`}
+        />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
           <div className="inline-flex items-center gap-2">
             <span className="w-5 h-[2px] bg-[#E31B23]" />
-            <span className="text-xs font-mono tracking-widest text-slate-300 uppercase">
+            <span
+              className={`text-xs font-mono tracking-widest uppercase ${
+                isDark ? 'text-slate-300' : 'text-slate-600 font-semibold'
+              }`}
+            >
               OUR PRODUCTS
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
+          <h1
+            className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}
+          >
             High-Quality <span className="text-[#E31B23]">Plug Cords &amp; Wires</span>
           </h1>
-          <p className="text-base text-slate-300 max-w-2xl font-normal">
+          <p className={`text-base max-w-2xl font-normal ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
             Engineered for performance. Manufactured for industries that keep the world moving.
           </p>
         </div>
@@ -99,37 +121,52 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1.5 text-xs text-slate-400 mb-6" aria-label="Breadcrumb">
+        <nav
+          className={`flex items-center gap-1.5 text-xs mb-6 ${
+            isDark ? 'text-slate-400' : 'text-slate-500'
+          }`}
+          aria-label="Breadcrumb"
+        >
           <span>Home</span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-white font-medium">Products</span>
+          <span className={`font-medium ${isDark ? 'text-white' : 'text-slate-900'}`}>Products</span>
         </nav>
 
         {/* Section Heading & Search Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+        <div
+          className={`flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b ${
+            isDark ? 'border-white/10' : 'border-slate-200'
+          }`}
+        >
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className={`text-2xl sm:text-3xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
               Our Product Range
             </h2>
-            <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+            <p className={`text-sm mt-1 max-w-2xl ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
               From plug cords to PVC insulated wires and cables, we offer a comprehensive range of electrical solutions built for durability, safety and consistent performance.
             </p>
           </div>
 
           {/* Quick search input */}
           <div className="w-full md:w-80 relative">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search className={`w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 ${isDark ? 'text-slate-400' : 'text-slate-400'}`} />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products..."
-              className="w-full bg-[#161C24] border border-white/10 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#E31B23] focus:border-[#E31B23]"
+              className={`w-full rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#E31B23] focus:border-[#E31B23] ${
+                isDark
+                  ? 'bg-[#161C24] border border-white/10 text-white placeholder-slate-400'
+                  : 'bg-white border border-slate-300 text-slate-900 placeholder-slate-400 shadow-xs'
+              }`}
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+                className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs ${
+                  isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'
+                }`}
               >
                 Clear
               </button>
@@ -138,15 +175,23 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
         </div>
 
         {/* Mobile filter toggle bar */}
-        <div className="lg:hidden flex items-center justify-between py-4 border-b border-white/10">
+        <div
+          className={`lg:hidden flex items-center justify-between py-4 border-b ${
+            isDark ? 'border-white/10' : 'border-slate-200'
+          }`}
+        >
           <button
             onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-            className="flex items-center gap-2 text-xs font-semibold bg-[#161C24] px-3.5 py-2 rounded-lg border border-white/10 text-slate-200"
+            className={`flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-lg border ${
+              isDark
+                ? 'bg-[#161C24] border-white/10 text-slate-200'
+                : 'bg-white border-slate-300 text-slate-800 shadow-xs'
+            }`}
           >
             <SlidersHorizontal className="w-3.5 h-3.5 text-[#E31B23]" />
             <span>Filter Catalogue</span>
           </button>
-          <div className="text-xs text-slate-400 font-mono">
+          <div className={`text-xs font-mono ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
             {filteredProducts.length} items found
           </div>
         </div>
@@ -155,16 +200,22 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
           {/* Left Sidebar Filters */}
           <aside className={`lg:col-span-3 space-y-6 ${mobileFilterOpen ? 'block' : 'hidden lg:block'}`}>
-            <div className="bg-[#11161C] border border-white/10 rounded-xl p-5 space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+            <div
+              className={`rounded-xl p-5 space-y-6 border ${
+                isDark
+                  ? 'bg-[#11161C] border-white/10'
+                  : 'bg-white border-slate-200 shadow-sm'
+              }`}
+            >
+              <div className={`flex items-center justify-between pb-3 border-b ${isDark ? 'border-white/10' : 'border-slate-100'}`}>
+                <div className={`flex items-center gap-2 text-sm font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   <Filter className="w-4 h-4 text-[#E31B23]" />
                   <span>Filters</span>
                 </div>
                 {hasActiveFilters && (
                   <button
                     onClick={resetFilters}
-                    className="text-xs text-[#E31B23] hover:underline flex items-center gap-1 cursor-pointer"
+                    className="text-xs text-[#E31B23] hover:underline flex items-center gap-1 cursor-pointer font-medium"
                   >
                     <RotateCcw className="w-3 h-3" />
                     <span>Reset</span>
@@ -174,7 +225,11 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
 
               {/* Product Type Filter */}
               <div className="space-y-2.5">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <div
+                  className={`text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 ${
+                    isDark ? 'text-slate-400' : 'text-slate-500 font-semibold'
+                  }`}
+                >
                   <span className="w-3 h-[1px] bg-[#E31B23]" />
                   <span>Product Type</span>
                 </div>
@@ -187,8 +242,12 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
                         onClick={() => setSelectedCategory(cat)}
                         className={`w-full text-left px-2.5 py-1.5 rounded text-xs flex items-center justify-between transition-colors ${
                           isSelected
-                            ? 'bg-[#E31B23]/15 text-white font-semibold border-l-2 border-[#E31B23]'
-                            : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                            ? isDark
+                              ? 'bg-[#E31B23]/15 text-white font-semibold border-l-2 border-[#E31B23]'
+                              : 'bg-red-50 text-[#E31B23] font-bold border-l-2 border-[#E31B23]'
+                            : isDark
+                            ? 'text-slate-300 hover:bg-white/5 hover:text-white'
+                            : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                         }`}
                       >
                         <span>{cat}</span>
@@ -200,18 +259,24 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
               </div>
 
               {/* Wire Gauge Filter */}
-              <div className="space-y-2.5 pt-4 border-t border-white/10">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+              <div className={`space-y-2.5 pt-4 border-t ${isDark ? 'border-white/10' : 'border-slate-100'}`}>
+                <div
+                  className={`text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 ${
+                    isDark ? 'text-slate-400' : 'text-slate-500 font-semibold'
+                  }`}
+                >
                   <span className="w-3 h-[1px] bg-[#E31B23]" />
                   <span>Wire Gauge</span>
                 </div>
                 <div className="grid grid-cols-2 gap-1.5 font-mono">
                   <button
                     onClick={() => setSelectedGauge('All')}
-                    className={`text-center py-1 px-2 rounded text-xs border ${
+                    className={`text-center py-1 px-2 rounded text-xs border cursor-pointer ${
                       selectedGauge === 'All'
                         ? 'bg-[#E31B23] text-white border-[#E31B23] font-semibold'
-                        : 'bg-[#161C24] text-slate-300 border-white/5 hover:border-white/20'
+                        : isDark
+                        ? 'bg-[#161C24] text-slate-300 border-white/5 hover:border-white/20'
+                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
                     }`}
                   >
                     All Gauges
@@ -222,10 +287,12 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
                       <button
                         key={gauge}
                         onClick={() => setSelectedGauge(gauge)}
-                        className={`text-center py-1 px-2 rounded text-xs border transition-colors ${
+                        className={`text-center py-1 px-2 rounded text-xs border transition-colors cursor-pointer ${
                           isSelected
                             ? 'bg-[#E31B23] text-white border-[#E31B23] font-semibold'
-                            : 'bg-[#161C24] text-slate-300 border-white/5 hover:border-white/20'
+                            : isDark
+                            ? 'bg-[#161C24] text-slate-300 border-white/5 hover:border-white/20'
+                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
                         }`}
                       >
                         {gauge}
@@ -236,18 +303,26 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
               </div>
 
               {/* Application Filter */}
-              <div className="space-y-2.5 pt-4 border-t border-white/10">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+              <div className={`space-y-2.5 pt-4 border-t ${isDark ? 'border-white/10' : 'border-slate-100'}`}>
+                <div
+                  className={`text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 ${
+                    isDark ? 'text-slate-400' : 'text-slate-500 font-semibold'
+                  }`}
+                >
                   <span className="w-3 h-[1px] bg-[#E31B23]" />
                   <span>Application</span>
                 </div>
                 <div className="space-y-1">
                   <button
                     onClick={() => setSelectedApplication('All')}
-                    className={`w-full text-left px-2.5 py-1.5 rounded text-xs flex items-center justify-between ${
+                    className={`w-full text-left px-2.5 py-1.5 rounded text-xs flex items-center justify-between cursor-pointer ${
                       selectedApplication === 'All'
-                        ? 'bg-[#E31B23]/15 text-white font-semibold border-l-2 border-[#E31B23]'
-                        : 'text-slate-300 hover:bg-white/5'
+                        ? isDark
+                          ? 'bg-[#E31B23]/15 text-white font-semibold border-l-2 border-[#E31B23]'
+                          : 'bg-red-50 text-[#E31B23] font-bold border-l-2 border-[#E31B23]'
+                        : isDark
+                        ? 'text-slate-300 hover:bg-white/5'
+                        : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     <span>All Applications</span>
@@ -259,10 +334,14 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
                       <button
                         key={app}
                         onClick={() => setSelectedApplication(app)}
-                        className={`w-full text-left px-2.5 py-1.5 rounded text-xs flex items-center justify-between transition-colors ${
+                        className={`w-full text-left px-2.5 py-1.5 rounded text-xs flex items-center justify-between transition-colors cursor-pointer ${
                           isSelected
-                            ? 'bg-[#E31B23]/15 text-white font-semibold border-l-2 border-[#E31B23]'
-                            : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                            ? isDark
+                              ? 'bg-[#E31B23]/15 text-white font-semibold border-l-2 border-[#E31B23]'
+                              : 'bg-red-50 text-[#E31B23] font-bold border-l-2 border-[#E31B23]'
+                            : isDark
+                            ? 'text-slate-300 hover:bg-white/5 hover:text-white'
+                            : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                         }`}
                       >
                         <span className="truncate">{app}</span>
@@ -278,9 +357,15 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
           {/* Right Product Grid */}
           <main className="lg:col-span-9 space-y-6">
             {/* Sort & Results Status Bar */}
-            <div className="flex items-center justify-between text-xs text-slate-400 bg-[#11161C] border border-white/10 px-4 py-3 rounded-lg">
+            <div
+              className={`flex items-center justify-between text-xs px-4 py-3 rounded-lg border ${
+                isDark
+                  ? 'text-slate-400 bg-[#11161C] border-white/10'
+                  : 'text-slate-600 bg-white border-slate-200 shadow-xs'
+              }`}
+            >
               <span className="font-mono">
-                Showing <strong className="text-white">{filteredProducts.length}</strong> products
+                Showing <strong className={isDark ? 'text-white' : 'text-slate-900'}>{filteredProducts.length}</strong> products
               </span>
 
               <div className="flex items-center gap-2">
@@ -288,7 +373,11 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-[#161C24] text-slate-200 border border-white/10 rounded px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23]"
+                  className={`rounded px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23] ${
+                    isDark
+                      ? 'bg-[#161C24] text-slate-200 border border-white/10'
+                      : 'bg-slate-50 text-slate-800 border border-slate-300'
+                  }`}
                 >
                   <option value="recommended">Featured / Recommended</option>
                   <option value="name-asc">Product Name (A-Z)</option>
@@ -311,16 +400,22 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
               </div>
             ) : (
               /* Empty state */
-              <div className="bg-[#11161C] border border-white/10 rounded-xl p-12 text-center space-y-4">
-                <p className="text-slate-300 font-medium text-base">
+              <div
+                className={`rounded-xl p-12 text-center space-y-4 border ${
+                  isDark
+                    ? 'bg-[#11161C] border-white/10'
+                    : 'bg-white border-slate-200 shadow-sm'
+                }`}
+              >
+                <p className={`font-medium text-base ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
                   No electrical products found matching your current filter criteria.
                 </p>
-                <p className="text-xs text-slate-400 max-w-md mx-auto">
+                <p className={`text-xs max-w-md mx-auto ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
                   Try clearing some filters or searching with a different keyword.
                 </p>
                 <button
                   onClick={resetFilters}
-                  className="bg-[#E31B23] hover:bg-[#C6141B] text-white text-xs font-semibold px-4 py-2 rounded transition-all cursor-pointer"
+                  className="bg-[#E31B23] hover:bg-[#C6141B] text-white text-xs font-semibold px-4 py-2 rounded transition-all cursor-pointer shadow-sm"
                 >
                   Reset All Filters
                 </button>
@@ -339,3 +434,4 @@ export const ProductCatalogue: React.FC<ProductCatalogueProps> = ({ onSelectForQ
     </section>
   );
 };
+

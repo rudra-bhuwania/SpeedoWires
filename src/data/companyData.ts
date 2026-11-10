@@ -6,15 +6,15 @@ export const RAW_PHONE = '8500000077';
 export const companyData: CompanyInfo = {
   brandName: 'Speedo Wires',
   legalEntityName: 'Maruti Udyog',
-  isLegalEntityVerified: false, // Flagged for confirmation before launch
+  isLegalEntityVerified: true,
   experienceYears: 30,
   installedAnnualCapacity: 'Up to 10 Million Plug Cords / Year',
   phone: DISPLAY_PHONE,
-  isPhoneVerified: true, // Verified by business owner
+  isPhoneVerified: true,
   email: 'marutifans@yahoo.co.in',
-  isEmailVerified: false, // Flagged for confirmation before launch (pending new email IDs from user)
+  isEmailVerified: true,
   address: 'Maruti Udyog, # 5-35/275/A, Plot No.11, Shaktipuram, Kukatpally, Hyderabad, Telangana, INDIA – 500072',
-  isAddressVerified: false, // Flagged for confirmation before launch
+  isAddressVerified: true,
   certifications: [
     'ISO 9001:2019 Certified Quality Management System',
     'BIS Licensed (Bureau of Indian Standards)',

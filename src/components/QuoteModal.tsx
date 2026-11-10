@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Send, CheckCircle2, Copy, Check, ArrowRight } from 'lucide-react';
+import { X, Send, CheckCircle2, Copy, Check } from 'lucide-react';
 import { QuoteFormData, QuoteValidationErrors, ProductCategory } from '../types';
 import { validateQuoteForm } from '../utils/catalogue';
+import { useTheme } from '../context/ThemeContext';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   initialProduct,
   initialCategory,
 }) => {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState<QuoteFormData>({
     name: '',
     companyName: '',
@@ -115,23 +117,34 @@ Requirements: ${formData.requirementDescription}
       role="dialog"
       aria-modal="true"
       aria-labelledby="quote-modal-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
     >
       <div
-        className="relative bg-[#11161C] border border-white/10 rounded-2xl max-w-xl w-full text-white shadow-2xl overflow-hidden my-8"
+        className={`relative border rounded-2xl max-w-xl w-full shadow-2xl overflow-hidden my-8 transition-colors ${
+          isDark ? 'bg-[#11161C] border-white/10 text-white' : 'bg-white border-slate-200 text-slate-900'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-[#161C24] border-b border-white/10 px-6 py-4 flex items-center justify-between">
+        <div
+          className={`border-b px-6 py-4 flex items-center justify-between ${
+            isDark ? 'bg-[#161C24] border-white/10' : 'bg-slate-50 border-slate-200'
+          }`}
+        >
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#E31B23]" />
-            <h2 id="quote-modal-title" className="text-base sm:text-lg font-bold text-white">
+            <h2
+              id="quote-modal-title"
+              className={`text-base sm:text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}
+            >
               Request an OEM Quotation
             </h2>
           </div>
           <button
             onClick={onClose}
             aria-label="Close quote modal"
-            className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors"
+            className={`p-1 rounded-lg transition-colors cursor-pointer ${
+              isDark ? 'text-slate-400 hover:text-white hover:bg-white/10' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
+            }`}
           >
             <X className="w-5 h-5" />
           </button>
@@ -140,36 +153,52 @@ Requirements: ${formData.requirementDescription}
         <div className="p-6 max-h-[80vh] overflow-y-auto">
           {isSubmitted ? (
             <div className="space-y-5 text-center py-4">
-              <div className="w-12 h-12 bg-emerald-950/60 border border-emerald-500/40 rounded-full flex items-center justify-center text-emerald-400 mx-auto">
+              <div
+                className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto border ${
+                  isDark
+                    ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-400'
+                    : 'bg-emerald-50 border-emerald-300 text-emerald-600'
+                }`}
+              >
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">Quotation Request Logged</h3>
-                <p className="text-xs text-slate-300 mt-1 max-w-md mx-auto">
+                <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  Quotation Request Logged
+                </h3>
+                <p className={`text-xs mt-1 max-w-md mx-auto ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                   Thank you, <strong>{formData.name}</strong>. Your OEM specification request has been registered in our development workflow.
                 </p>
               </div>
 
-              <div className="bg-[#161C24] p-3.5 rounded-xl border border-white/10 text-left text-xs font-mono space-y-1">
-                <div>Company: <span className="text-white">{formData.companyName}</span></div>
-                <div>Category: <span className="text-white">{formData.productCategory}</span></div>
+              <div
+                className={`p-3.5 rounded-xl border text-left text-xs font-mono space-y-1 ${
+                  isDark ? 'bg-[#161C24] border-white/10' : 'bg-slate-50 border-slate-200'
+                }`}
+              >
+                <div>Company: <span className={isDark ? 'text-white' : 'text-slate-900 font-semibold'}>{formData.companyName}</span></div>
+                <div>Category: <span className={isDark ? 'text-white' : 'text-slate-900 font-semibold'}>{formData.productCategory}</span></div>
                 {formData.selectedProductId && (
-                  <div>Product: <span className="text-white">{formData.selectedProductId}</span></div>
+                  <div>Product: <span className={isDark ? 'text-white' : 'text-slate-900 font-semibold'}>{formData.selectedProductId}</span></div>
                 )}
-                <div>Contact: <span className="text-white">{formData.emailOrPhone}</span></div>
+                <div>Contact: <span className={isDark ? 'text-white' : 'text-slate-900 font-semibold'}>{formData.emailOrPhone}</span></div>
               </div>
 
               <div className="flex items-center justify-center gap-3 pt-2">
                 <button
                   onClick={handleCopySummary}
-                  className="bg-[#161C24] hover:bg-[#252C34] text-slate-200 text-xs px-4 py-2 rounded border border-white/10 flex items-center gap-1.5 transition-colors"
+                  className={`text-xs px-4 py-2 rounded border flex items-center gap-1.5 transition-colors cursor-pointer ${
+                    isDark
+                      ? 'bg-[#161C24] hover:bg-[#252C34] text-slate-200 border-white/10'
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300'
+                  }`}
                 >
-                  {copiedSummary ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#E31B23]" />}
+                  {copiedSummary ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-[#E31B23]" />}
                   <span>{copiedSummary ? 'Copied' : 'Copy Summary'}</span>
                 </button>
                 <button
                   onClick={onClose}
-                  className="bg-[#E31B23] hover:bg-[#C6141B] text-white text-xs font-semibold px-5 py-2 rounded transition-all"
+                  className="bg-[#E31B23] hover:bg-[#C6141B] text-white text-xs font-semibold px-5 py-2 rounded transition-all cursor-pointer shadow-md"
                 >
                   Done
                 </button>
@@ -178,12 +207,16 @@ Requirements: ${formData.requirementDescription}
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               {formData.selectedProductId && (
-                <div className="bg-[#161C24] border border-[#E31B23]/40 p-2.5 rounded-lg text-xs flex items-center justify-between">
-                  <span>Selected Product: <strong className="text-white">{formData.selectedProductId}</strong></span>
+                <div
+                  className={`p-2.5 rounded-lg text-xs flex items-center justify-between border ${
+                    isDark ? 'bg-[#161C24] border-[#E31B23]/40' : 'bg-red-50 border-red-200'
+                  }`}
+                >
+                  <span>Selected Product: <strong className={isDark ? 'text-white' : 'text-slate-900'}>{formData.selectedProductId}</strong></span>
                   <button
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, selectedProductId: '' }))}
-                    className="text-[#E31B23] hover:underline"
+                    className="text-[#E31B23] hover:underline font-semibold"
                   >
                     Clear
                   </button>
@@ -192,7 +225,7 @@ Requirements: ${formData.requirementDescription}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
-                  <label htmlFor="modal-name" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="modal-name" className={`text-xs font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Full Name <span className="text-[#E31B23]">*</span>
                   </label>
                   <input
@@ -202,15 +235,17 @@ Requirements: ${formData.requirementDescription}
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className={`w-full bg-[#161C24] border ${
-                      errors.name ? 'border-red-500' : 'border-white/10'
-                    } rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-[#E31B23]`}
+                    className={`w-full border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23] ${
+                      isDark
+                        ? 'bg-[#161C24] text-white placeholder-slate-500 ' + (errors.name ? 'border-red-500' : 'border-white/10')
+                        : 'bg-white text-slate-900 placeholder-slate-400 ' + (errors.name ? 'border-red-500' : 'border-slate-300')
+                    }`}
                   />
-                  {errors.name && <p className="text-[10px] text-red-400">{errors.name}</p>}
+                  {errors.name && <p className="text-[10px] text-red-500 font-medium">{errors.name}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="modal-company" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="modal-company" className={`text-xs font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Company / OEM <span className="text-[#E31B23]">*</span>
                   </label>
                   <input
@@ -220,17 +255,19 @@ Requirements: ${formData.requirementDescription}
                     value={formData.companyName}
                     onChange={handleChange}
                     placeholder="Company Name"
-                    className={`w-full bg-[#161C24] border ${
-                      errors.companyName ? 'border-red-500' : 'border-white/10'
-                    } rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-[#E31B23]`}
+                    className={`w-full border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23] ${
+                      isDark
+                        ? 'bg-[#161C24] text-white placeholder-slate-500 ' + (errors.companyName ? 'border-red-500' : 'border-white/10')
+                        : 'bg-white text-slate-900 placeholder-slate-400 ' + (errors.companyName ? 'border-red-500' : 'border-slate-300')
+                    }`}
                   />
-                  {errors.companyName && <p className="text-[10px] text-red-400">{errors.companyName}</p>}
+                  {errors.companyName && <p className="text-[10px] text-red-500 font-medium">{errors.companyName}</p>}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
-                  <label htmlFor="modal-contact" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="modal-contact" className={`text-xs font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Email or Phone <span className="text-[#E31B23]">*</span>
                   </label>
                   <input
@@ -240,15 +277,17 @@ Requirements: ${formData.requirementDescription}
                     value={formData.emailOrPhone}
                     onChange={handleChange}
                     placeholder="email@company.com / +91..."
-                    className={`w-full bg-[#161C24] border ${
-                      errors.emailOrPhone ? 'border-red-500' : 'border-white/10'
-                    } rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-[#E31B23]`}
+                    className={`w-full border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23] ${
+                      isDark
+                        ? 'bg-[#161C24] text-white placeholder-slate-500 ' + (errors.emailOrPhone ? 'border-red-500' : 'border-white/10')
+                        : 'bg-white text-slate-900 placeholder-slate-400 ' + (errors.emailOrPhone ? 'border-red-500' : 'border-slate-300')
+                    }`}
                   />
-                  {errors.emailOrPhone && <p className="text-[10px] text-red-400">{errors.emailOrPhone}</p>}
+                  {errors.emailOrPhone && <p className="text-[10px] text-red-500 font-medium">{errors.emailOrPhone}</p>}
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="modal-cat" className="text-xs font-medium text-slate-300">
+                  <label htmlFor="modal-cat" className={`text-xs font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Category <span className="text-[#E31B23]">*</span>
                   </label>
                   <select
@@ -256,7 +295,11 @@ Requirements: ${formData.requirementDescription}
                     name="productCategory"
                     value={formData.productCategory}
                     onChange={handleChange}
-                    className="w-full bg-[#161C24] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-[#E31B23]"
+                    className={`w-full border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23] ${
+                      isDark
+                        ? 'bg-[#161C24] border-white/10 text-white'
+                        : 'bg-white border-slate-300 text-slate-900'
+                    }`}
                   >
                     <option value="Plug Cords">Molded Plug Cords (2-Pin / 3-Pin / Angled)</option>
                     <option value="IEC & Appliance Cords">IEC & Appliance Cords (C13 / C7 Figure-8)</option>
@@ -268,7 +311,7 @@ Requirements: ${formData.requirementDescription}
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="modal-desc" className="text-xs font-medium text-slate-300">
+                <label htmlFor="modal-desc" className={`text-xs font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   Requirement Details <span className="text-[#E31B23]">*</span>
                 </label>
                 <textarea
@@ -278,12 +321,14 @@ Requirements: ${formData.requirementDescription}
                   value={formData.requirementDescription}
                   onChange={handleChange}
                   placeholder="Detail lengths, quantities, pin plating, terminal ends..."
-                  className={`w-full bg-[#161C24] border ${
-                    errors.requirementDescription ? 'border-red-500' : 'border-white/10'
-                  } rounded-lg p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-[#E31B23]`}
+                  className={`w-full border rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#E31B23] ${
+                    isDark
+                      ? 'bg-[#161C24] text-white placeholder-slate-500 ' + (errors.requirementDescription ? 'border-red-500' : 'border-white/10')
+                      : 'bg-white text-slate-900 placeholder-slate-400 ' + (errors.requirementDescription ? 'border-red-500' : 'border-slate-300')
+                  }`}
                 />
                 {errors.requirementDescription && (
-                  <p className="text-[10px] text-red-400">{errors.requirementDescription}</p>
+                  <p className="text-[10px] text-red-500 font-medium">{errors.requirementDescription}</p>
                 )}
               </div>
 
@@ -291,14 +336,16 @@ Requirements: ${formData.requirementDescription}
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white"
+                  className={`px-4 py-2 text-xs font-medium transition-colors cursor-pointer ${
+                    isDark ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+                  }`}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#E31B23] hover:bg-[#C6141B] disabled:bg-red-900/50 text-white font-semibold text-xs px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all cursor-pointer"
+                  className="bg-[#E31B23] hover:bg-[#C6141B] disabled:bg-red-900/50 text-white font-semibold text-xs px-5 py-2.5 rounded-lg flex items-center gap-2 transition-all cursor-pointer shadow-md"
                 >
                   {isSubmitting ? (
                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

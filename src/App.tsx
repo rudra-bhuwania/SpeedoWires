@@ -9,15 +9,15 @@ import { WhyOemsSection } from './components/WhyOemsSection';
 import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { VerificationDrawer } from './components/VerificationDrawer';
 import { Product, ProductCategory, IndustryType } from './types';
 import { productsData } from './data/products';
 import { DISPLAY_PHONE } from './data/companyData';
 import { ArrowRight, Factory, Cpu, Layers, ShieldCheck, Phone } from 'lucide-react';
+import { useTheme } from './context/ThemeContext';
 
 export default function App() {
+  const { isDark } = useTheme();
   const [activeTab, setActiveTab] = useState<string>('home');
-  const [verificationDrawerOpen, setVerificationDrawerOpen] = useState(false);
   const [prefilledProduct, setPrefilledProduct] = useState<string | undefined>(undefined);
   const [prefilledCategory, setPrefilledCategory] = useState<ProductCategory | undefined>(undefined);
 
@@ -60,13 +60,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0D12] text-slate-100 flex flex-col font-sans selection:bg-[#E31B23] selection:text-white">
+    <div
+      className={`min-h-screen flex flex-col font-sans selection:bg-[#E31B23] selection:text-white transition-colors duration-200 ${
+        isDark ? 'bg-[#0A0D12] text-slate-100' : 'bg-slate-50 text-slate-900'
+      }`}
+    >
       {/* Global Navigation Bar */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={handleTabChange}
         onRequestQuote={handleGeneralQuoteRequest}
-        onOpenVerificationDrawer={() => setVerificationDrawerOpen(true)}
       />
 
       {/* Main View Area */}
@@ -81,20 +84,40 @@ export default function App() {
             />
 
             {/* 2. The Big Hits & Core Strengths: Compact Highlights */}
-            <section className="bg-[#0E131A] py-14 sm:py-16 border-b border-white/10">
+            <section
+              className={`py-14 sm:py-16 border-b transition-colors ${
+                isDark ? 'bg-[#0E131A] border-white/10' : 'bg-white border-slate-200'
+              }`}
+            >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/10">
+                <div
+                  className={`flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b ${
+                    isDark ? 'border-white/10' : 'border-slate-200'
+                  }`}
+                >
                   <div>
                     <div className="inline-flex items-center gap-2">
                       <span className="w-5 h-[2px] bg-[#E31B23]" />
-                      <span className="text-xs font-mono tracking-widest text-slate-300 uppercase">
+                      <span
+                        className={`text-xs font-mono tracking-widest uppercase ${
+                          isDark ? 'text-slate-300' : 'text-slate-600 font-semibold'
+                        }`}
+                      >
                         AT A GLANCE · KEY ADVANTAGES
                       </span>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mt-1">
+                    <h2
+                      className={`text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mt-1 ${
+                        isDark ? 'text-white' : 'text-slate-900'
+                      }`}
+                    >
                       THE SPEEDO WIRES <span className="text-[#E31B23]">ADVANTAGE</span>
                     </h2>
-                    <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mt-1">
+                    <p
+                      className={`text-xs sm:text-sm max-w-2xl mt-1 ${
+                        isDark ? 'text-slate-300' : 'text-slate-600'
+                      }`}
+                    >
                       The core manufacturing benchmarks and certifications that make Maruti Udyog / Speedo Wires the preferred supplier for appliance OEMs.
                     </p>
                   </div>
@@ -109,54 +132,102 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                  <div className="bg-[#11161C] border border-white/10 rounded-xl p-5 space-y-3 hover:border-white/20 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-[#161C24] border border-white/5 flex items-center justify-center">
+                  <div
+                    className={`rounded-xl p-5 space-y-3 transition-all ${
+                      isDark
+                        ? 'bg-[#11161C] border border-white/10 hover:border-white/20'
+                        : 'bg-slate-50/80 border border-slate-200 hover:border-slate-300 hover:bg-white shadow-xs hover:shadow-sm'
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center border ${
+                        isDark ? 'bg-[#161C24] border-white/5' : 'bg-red-50 border-red-100'
+                      }`}
+                    >
                       <Factory className="w-5 h-5 text-[#E31B23]" />
                     </div>
                     <div>
-                      <div className="text-xl font-black text-white">10M Units / Year</div>
+                      <div className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                        10M Units / Year
+                      </div>
                       <div className="text-xs font-bold text-[#E31B23]">Installed Annual Capacity</div>
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                       High-volume production facility built for seasonal volume peaks, bulk procurement, and continuous OEM assembly lines.
                     </p>
                   </div>
 
-                  <div className="bg-[#11161C] border border-white/10 rounded-xl p-5 space-y-3 hover:border-white/20 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-[#161C24] border border-white/5 flex items-center justify-center">
+                  <div
+                    className={`rounded-xl p-5 space-y-3 transition-all ${
+                      isDark
+                        ? 'bg-[#11161C] border border-white/10 hover:border-white/20'
+                        : 'bg-slate-50/80 border border-slate-200 hover:border-slate-300 hover:bg-white shadow-xs hover:shadow-sm'
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center border ${
+                        isDark ? 'bg-[#161C24] border-white/5' : 'bg-red-50 border-red-100'
+                      }`}
+                    >
                       <Cpu className="w-5 h-5 text-[#E31B23]" />
                     </div>
                     <div>
-                      <div className="text-xl font-black text-white">In-House Drawing</div>
+                      <div className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                        In-House Drawing
+                      </div>
                       <div className="text-xs font-bold text-[#E31B23]">99.9% Electrolytic Copper</div>
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                       Multi-die drawing and continuous resistance annealing guarantee maximum conductivity, low resistance, and high flex fatigue life.
                     </p>
                   </div>
 
-                  <div className="bg-[#11161C] border border-white/10 rounded-xl p-5 space-y-3 hover:border-white/20 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-[#161C24] border border-white/5 flex items-center justify-center">
+                  <div
+                    className={`rounded-xl p-5 space-y-3 transition-all ${
+                      isDark
+                        ? 'bg-[#11161C] border border-white/10 hover:border-white/20'
+                        : 'bg-slate-50/80 border border-slate-200 hover:border-slate-300 hover:bg-white shadow-xs hover:shadow-sm'
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center border ${
+                        isDark ? 'bg-[#161C24] border-white/5' : 'bg-red-50 border-red-100'
+                      }`}
+                    >
                       <Layers className="w-5 h-5 text-[#E31B23]" />
                     </div>
                     <div>
-                      <div className="text-xl font-black text-white">In-House Compounding</div>
+                      <div className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                        In-House Compounding
+                      </div>
                       <div className="text-xs font-bold text-[#E31B23]">Virgin PVC Insulation</div>
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                       Custom compounded virgin resin formulation for superior dielectric strength, heat resistance, and uniform concentric walls.
                     </p>
                   </div>
 
-                  <div className="bg-[#11161C] border border-white/10 rounded-xl p-5 space-y-3 hover:border-white/20 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-[#161C24] border border-white/5 flex items-center justify-center">
+                  <div
+                    className={`rounded-xl p-5 space-y-3 transition-all ${
+                      isDark
+                        ? 'bg-[#11161C] border border-white/10 hover:border-white/20'
+                        : 'bg-slate-50/80 border border-slate-200 hover:border-slate-300 hover:bg-white shadow-xs hover:shadow-sm'
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center border ${
+                        isDark ? 'bg-[#161C24] border-white/5' : 'bg-red-50 border-red-100'
+                      }`}
+                    >
                       <ShieldCheck className="w-5 h-5 text-[#E31B23]" />
                     </div>
                     <div>
-                      <div className="text-xl font-black text-white">IS 1293 &amp; IS 694</div>
+                      <div className={`text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                        IS 1293 &amp; IS 694
+                      </div>
                       <div className="text-xs font-bold text-[#E31B23]">BIS Licensed (CM/L 630008)</div>
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                       Rigorous laboratory testing and 100% in-line spark testing. Certified ISO 9001:2019 Quality Management System.
                     </p>
                   </div>
@@ -165,28 +236,48 @@ export default function App() {
             </section>
 
             {/* 3. Product Catalogue Highlights: Just a hint */}
-            <section className="bg-[#0A0D12] py-16 border-b border-white/10">
+            <section
+              className={`py-16 border-b transition-colors ${
+                isDark ? 'bg-[#0A0D12] border-white/10' : 'bg-slate-50 border-slate-200'
+              }`}
+            >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/10">
+                <div
+                  className={`flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b ${
+                    isDark ? 'border-white/10' : 'border-slate-200'
+                  }`}
+                >
                   <div>
                     <div className="inline-flex items-center gap-2">
                       <span className="w-5 h-[2px] bg-[#E31B23]" />
-                      <span className="text-xs font-mono tracking-widest text-slate-300 uppercase">
+                      <span
+                        className={`text-xs font-mono tracking-widest uppercase ${
+                          isDark ? 'text-slate-300' : 'text-slate-600 font-semibold'
+                        }`}
+                      >
                         OUR PRODUCTS (JUST A HINT)
                       </span>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white mt-1">
+                    <h2
+                      className={`text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mt-1 ${
+                        isDark ? 'text-white' : 'text-slate-900'
+                      }`}
+                    >
                       ENGINEERED FOR THE CONNECTION.{' '}
                       <span className="text-[#E31B23]">BUILT FOR APPLIANCES.</span>
                     </h2>
-                    <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+                    <p
+                      className={`text-xs sm:text-sm mt-1 max-w-2xl ${
+                        isDark ? 'text-slate-300' : 'text-slate-600'
+                      }`}
+                    >
                       A sample of our top high-volume OEM configurations. Full technical datasheets and custom variations available in our catalogue.
                     </p>
                   </div>
 
                   <button
                     onClick={() => handleTabChange('products')}
-                    className="inline-flex items-center gap-2 bg-[#E31B23] hover:bg-[#C6141B] text-white text-xs font-semibold px-4 py-2.5 rounded transition-all self-start md:self-end cursor-pointer"
+                    className="inline-flex items-center gap-2 bg-[#E31B23] hover:bg-[#C6141B] text-white text-xs font-semibold px-4 py-2.5 rounded transition-all self-start md:self-end cursor-pointer shadow-md"
                   >
                     <span>View All 12 Products</span>
                     <ArrowRight className="w-4 h-4" />
@@ -197,10 +288,18 @@ export default function App() {
                   {productsData.slice(0, 3).map((product) => (
                     <div
                       key={product.id}
-                      className="bg-[#11161C] border border-white/10 rounded-xl overflow-hidden p-5 flex flex-col justify-between hover:border-white/20 transition-all hover:shadow-xl group"
+                      className={`rounded-xl overflow-hidden p-5 flex flex-col justify-between transition-all group ${
+                        isDark
+                          ? 'bg-[#11161C] border border-white/10 hover:border-white/20 hover:shadow-xl'
+                          : 'bg-white border border-slate-200 hover:border-slate-300 hover:shadow-md'
+                      }`}
                     >
                       <div className="space-y-4">
-                        <div className="aspect-[16/10] bg-[#0A0D12] rounded-lg p-3 flex items-center justify-center border border-white/5">
+                        <div
+                          className={`aspect-[16/10] rounded-lg p-3 flex items-center justify-center border ${
+                            isDark ? 'bg-[#0A0D12] border-white/5' : 'bg-slate-50 border-slate-100'
+                          }`}
+                        >
                           <img
                             src={product.image}
                             alt={product.name}
@@ -208,34 +307,58 @@ export default function App() {
                           />
                         </div>
                         <div>
-                          <div className="text-[11px] font-mono text-[#E31B23] uppercase">
+                          <div className="text-[11px] font-mono text-[#E31B23] uppercase font-semibold">
                             {product.category}
                           </div>
-                          <h3 className="text-lg font-bold text-white mt-0.5">
+                          <h3
+                            className={`text-lg font-bold mt-0.5 ${
+                              isDark ? 'text-white' : 'text-slate-900'
+                            }`}
+                          >
                             {product.name}
                           </h3>
-                          <p className="text-xs text-slate-300 mt-1 line-clamp-2">
+                          <p
+                            className={`text-xs mt-1 line-clamp-2 ${
+                              isDark ? 'text-slate-300' : 'text-slate-600'
+                            }`}
+                          >
                             {product.shortDesc}
                           </p>
                           {product.stampedMarkings && (
-                            <div className="mt-2 text-[10px] font-mono text-[#E31B23] bg-[#E31B23]/10 px-2 py-0.5 rounded truncate">
+                            <div
+                              className={`mt-2 text-[10px] font-mono px-2 py-0.5 rounded truncate ${
+                                isDark
+                                  ? 'text-[#E31B23] bg-[#E31B23]/10'
+                                  : 'text-[#E31B23] bg-red-50 border border-red-100'
+                              }`}
+                            >
                               {product.stampedMarkings}
                             </div>
                           )}
                         </div>
                       </div>
 
-                      <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                      <div
+                        className={`pt-4 mt-4 border-t flex items-center justify-between ${
+                          isDark ? 'border-white/10' : 'border-slate-200'
+                        }`}
+                      >
                         <button
                           onClick={() => handleTabChange('products')}
-                          className="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
+                          className={`text-xs flex items-center gap-1 cursor-pointer ${
+                            isDark ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+                          }`}
                         >
                           <span>Full Specs</span>
                           <ArrowRight className="w-3 h-3 text-[#E31B23]" />
                         </button>
                         <button
                           onClick={() => handleOpenQuoteForProduct(product)}
-                          className="bg-[#161C24] hover:bg-[#E31B23] text-white text-xs font-semibold px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
+                          className={`text-xs font-semibold px-3 py-1.5 rounded transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer ${
+                            isDark
+                              ? 'bg-[#161C24] hover:bg-[#E31B23] text-white'
+                              : 'bg-slate-100 hover:bg-[#E31B23] text-slate-800 hover:text-white border border-slate-200'
+                          }`}
                         >
                           <span>Contact Us</span>
                           <ArrowRight className="w-3 h-3 text-[#E31B23] group-hover:text-white" />
@@ -248,7 +371,11 @@ export default function App() {
                 <div className="text-center pt-2">
                   <button
                     onClick={() => handleTabChange('products')}
-                    className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-white border border-white/10 hover:border-white/20 px-5 py-2.5 rounded-lg transition-colors cursor-pointer"
+                    className={`inline-flex items-center gap-2 text-xs font-mono px-5 py-2.5 rounded-lg border transition-colors cursor-pointer ${
+                      isDark
+                        ? 'border-white/10 hover:border-white/20 text-slate-400 hover:text-white'
+                        : 'border-slate-300 hover:border-slate-400 text-slate-600 hover:text-slate-900 bg-white shadow-xs'
+                    }`}
                   >
                     <span>Browse complete catalogue with 2-pin, 3-pin, IEC C13, Figure-8, and twin-flat wire rolls</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E31B23]" />
@@ -276,18 +403,34 @@ export default function App() {
         {activeTab === 'manufacturing' && (
           <div className="pt-24 space-y-0">
             {/* Manufacturing Header */}
-            <div className="bg-[#0E131A] border-b border-white/10 py-12">
+            <div
+              className={`border-b py-12 transition-colors ${
+                isDark ? 'bg-[#0E131A] border-white/10' : 'bg-white border-slate-200'
+              }`}
+            >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
                 <div className="inline-flex items-center gap-2">
                   <span className="w-5 h-[2px] bg-[#E31B23]" />
-                  <span className="text-xs font-mono tracking-widest text-slate-300 uppercase">
+                  <span
+                    className={`text-xs font-mono tracking-widest uppercase ${
+                      isDark ? 'text-slate-300' : 'text-slate-600 font-semibold'
+                    }`}
+                  >
                     MANUFACTURING EXCELLENCE
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">
+                <h1
+                  className={`text-3xl sm:text-4xl lg:text-5xl font-black ${
+                    isDark ? 'text-white' : 'text-slate-900'
+                  }`}
+                >
                   CONTROL THE PROCESS. <span className="text-[#E31B23]">RESPECT THE DETAIL.</span>
                 </h1>
-                <p className="text-base text-slate-300 max-w-2xl font-normal">
+                <p
+                  className={`text-base max-w-2xl font-normal ${
+                    isDark ? 'text-slate-300' : 'text-slate-600'
+                  }`}
+                >
                   In-house metallurgical drawing, controlled resistance annealing, and polymer compounding give Speedo Wires total control over critical product performance.
                 </p>
               </div>
@@ -346,13 +489,6 @@ export default function App() {
       <Footer
         onNavigate={handleTabChange}
         onRequestQuote={handleGeneralQuoteRequest}
-        onOpenVerificationDrawer={() => setVerificationDrawerOpen(true)}
-      />
-
-      {/* Business Owner Verification Checklist Drawer */}
-      <VerificationDrawer
-        isOpen={verificationDrawerOpen}
-        onClose={() => setVerificationDrawerOpen(false)}
       />
     </div>
   );
